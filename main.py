@@ -83,6 +83,26 @@ def toggle_folder_frame():
     else:
         folder_frame.pack(pady=5, side="top", anchor="nw")
 
+def Reset():
+    global reset_count
+    folder = path_var.get()
+    label_count_var.set(str(reset_count))
+    if os.path.exists(f"{folder}\\file0"):
+        os.remove(f'{folder}\\file0')
+    if os.path.exists(f'{folder}\\file9'):
+        os.remove(f'{folder}\\file9')
+    if os.path.exists(f'{folder}\\file8'):
+        os.remove(f'{folder}\\file8')
+    if os.path.exists(f'{folder}\\undertale.ini'):
+        os.remove(f'{folder}\\undertale.ini')
+    reset_count += 1
+    
+
+reset_btn = tk.Button(root, text="Reset", command=Reset, fg="black", bg="white", font=undertale_font_small)
+reset_btn.pack(pady=10)
+
+
 change_btn = tk.Button(root, text="⚙️", command=toggle_folder_frame, fg="white", bg="black", font=undertale_font_small, bd=0)
+
 
 root.mainloop()
