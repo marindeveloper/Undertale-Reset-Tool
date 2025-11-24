@@ -1,6 +1,6 @@
 # Undertale-Reset-Counter
 
-A Python tool that automatically monitors your UNDERTALE save folder to detect resets. A reset is counted when the save files are removed and then recreated.
+A Python tool that automatically monitors your UNDERTALE save folder to detect resets. A reset is counted when the save files are removed and then recreated. It also resets your save with a click of a button!
 
 This tool is designed mainly for speedrunners to keep track of actual resets during their runs. Note that in-game resets do not count unless the save files are deleted from the folder, so normal in-game resets won’t be detected.
 
