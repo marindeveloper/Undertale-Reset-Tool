@@ -30,6 +30,8 @@ Download the main.py file (and PixelOperator.tff if you haven't already installe
 
 3. Press Start Watching.
 
+4. If you want to reset your run, press the RESET button, it'll delete the save files, giving you a true reset with one click, no having to manually delete them!
+   
   The reset counter will automatically increment whenever a reset is detected.
 
-  Use the ⚙️ icon to change folders or adjust window settings.
+  Use the ⚙️ icon to change folders.
