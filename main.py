@@ -87,6 +87,12 @@ def Reset():
     global reset_count
     folder = path_var.get()
     label_count_var.set(str(reset_count))
+    if os.path.exists(f"{folder}\\playerachievementcache.dat"):
+        os.remove(f'{folder}\\playerachievementcache.dat')
+    if os.path.exists(f"{folder}\\system_information_962"):
+        os.remove(f'{folder}\\system_information_962')
+    if os.path.exists(f"{folder}\\system_information_963"):
+        os.remove(f'{folder}\\system_information_963')
     if os.path.exists(f"{folder}\\file0"):
         os.remove(f'{folder}\\file0')
     if os.path.exists(f'{folder}\\file9'):
@@ -95,7 +101,10 @@ def Reset():
         os.remove(f'{folder}\\file8')
     if os.path.exists(f'{folder}\\undertale.ini'):
         os.remove(f'{folder}\\undertale.ini')
-    reset_count += 1
+        reset_count += 1
+    else:
+        reset_count = reset_count
+   
     
 
 reset_btn = tk.Button(root, text="Reset", command=Reset, fg="black", bg="white", font=undertale_font_small)
