@@ -3,6 +3,8 @@ A lightweight Python tool that automatically monitors your UNDERTALE save folder
 
 Designed specifically for speedrunners to keep track of **True Resets** (where save files are physically deleted) so that each run can be legal. In-game resets do NOT count as they don't delete files from the folders, this also means a True Reset wasn't done and the run is not legal.
 
+---
+<img width="550" height="405" alt="Screenshot 2025-12-23 195848" src="https://github.com/user-attachments/assets/6112ed6b-8b32-466e-8ebf-9084332cede8" />
 
 
 ## Download & Installation
