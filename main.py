@@ -24,7 +24,7 @@ root = tk.Tk()
 
 
 
-myappid = 'marindeveloper.undertale.counter' # if you make your own version please change this to your own id but if you arent then please leave it thanks
+myappid = 'marindeveloper.undertale.tool' # if you make your own version please change this to your own id but if you arent then please leave it thanks
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
 
@@ -67,8 +67,6 @@ undertale_font_big = tkfont.Font(family="Pixel Operator", size=36, weight="bold"
 undertale_font_small = tkfont.Font(family="Pixel Operator", size=20)
 undertale_font_xsmall = tkfont.Font(family="Pixel Operator", size=16)
 
-
-root.title("Undertale Reset Counter by marindeveloper")
 root.configure(bg="black")
 
 title_bar = ctk.CTkFrame(root, height=35, corner_radius=0, fg_color="black")
@@ -83,7 +81,7 @@ if os.path.exists(title_icon_path):
     
 
 # Custom Title Label cuz i need the free promo whenever i get the chance too even tho fucking nobody uses this, if you make your own ver of this app you can change it but if not please leave it thanks
-title_label = tk.Label(title_bar, text="Undertale Reset Counter by marindeveloper", 
+title_label = tk.Label(title_bar, text="Undertale Reset Tool by marindeveloper", 
                        fg="white", bg="black", font=undertale_font_xsmall)
 title_label.pack(side="left", padx=5)
 # Custom Close Button cuz how you gonna have a window without one
@@ -147,7 +145,7 @@ entry = tk.Entry(entry_border, textvariable=path_var, width=40, fg="white", bg="
 entry.pack(padx=2, pady=2, fill="x")
 
 def browse_folder():
-    folder = filedialog.askdirectory(title="Set up Undertale Reset Counter", initialdir="~")
+    folder = filedialog.askdirectory(title="Set up Undertale Reset Tool", initialdir="~")
     if folder:
         path_var.set(folder)
 
