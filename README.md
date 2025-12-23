@@ -1,37 +1,55 @@
-# Undertale-Reset-Counter
+## Undertale Reset Tool
+A lightweight Python tool that automatically monitors your UNDERTALE save folder to detect and count resets. 
 
-A Python tool that automatically monitors your UNDERTALE save folder to detect resets. A reset is counted when the save files are removed and then recreated. It also resets your save with a click of a button!
+Designed specifically for speedrunners to keep track of **True Resets** (where save files are physically deleted) so that each run can be legal. In-game resets do NOT count as they don't delete files from the folders, this also means a True Reset wasn't done and the run is not legal.
 
-This tool is designed mainly for speedrunners to keep track of actual resets during their runs. Note that in-game resets do not count unless the save files are deleted from the folder, so normal in-game resets won’t be detected.
 
-# Features
 
-Tracks the number of resets automatically.
+## Download & Installation
+If you just want to use the tool as is, you don't need to install anything else.
 
-Displays resets in a Undertale-ish inspired interface.
+1. Go to the [Releases](https://github.com/marindeveloper/Undertale-Reset-Tool/releases) page.
+2. Download the latest `Undertale-Reset-Tool.zip`.
+3. Extract the folder and run `Undertale Reset Tool.exe`.
 
-A button that resets your UNDERTALE save, basically just deletes the file0, file9, file8, and undertale.ini files.
+> **⚠️ Antivirus Note:** Some antivirus software may flag the EXE as a false positive (3/72 on VirusTotal). This is a common issue with Python apps built with PyInstaller. You can verify the safety by checking the source code here (it's only 283 lines so) or well you can do anything you want lol it's open source.
 
-# Requirements
 
-1. Python 3.x
 
-2. Tkinter
+## Features
+* **Auto-Detection:** Automatically increments the counter when save files are deleted and recreated.
+* **True Reset Button:** Clears all Undertale save data (`file0`, `file9`, `undertale.ini`, etc.) with one click.
+* **Undertale Aesthetic:** Custom UI inspired by the game’s style.
+* **Customizable:** Change your save folder at any time using the ⚙️ icon.
 
-3. Pixel Operator font needs to be installed in order for the program to look correctly. (font is included in files but you could also download from elsewhere)
 
-# Usage
 
-Download the main.py file (and PixelOperator.tff if you haven't already installed this font, download it and install it on your system, either from this github repo or https://www.dafont.com/pixel-operator.font)
+##  Usage
+1. **Set Folder:** Launch the app and select your UNDERTALE save folder (usually in `AppData/Local/UNDERTALE`).
+2. **Watch:** Press **START WATCHING**. The counter will now track file changes.
+3. **Reset:** Use the **RESET** button in the app to perform a legal speedrun reset. 
+   * *Note: In-game menu resets do not trigger the counter as they do not delete the physical files.*
 
-1. Run main.py
 
-2. Select your UNDERTALE save folder.
 
-3. Press Start Watching.
+## Requirements (For Developers)
+If you want to run the script from source or modify it:
 
-4. If you want to reset your run, press the RESET button, it'll delete the save files, giving you a true reset with one click, no having to manually delete them!
-   
-  The reset counter will automatically increment whenever a reset is detected.
+1. **Python 3.x**
+2. **External Libraries:** You must install the following via terminal/command prompt:
+   ```bash
+   pip install customtkinter.
+   ```
+3. **Font:** The **Pixel Operator** font is required. (unless you're using the code for your own project then you can use whatever font you may want.) 
+   * It is included in the `assets/` folder.
+   * You can also download it from [Dafont](https://www.dafont.com/pixel-operator.font).
+   * 
+### How to Run from Source
+1. Clone the repo.
+2. Ensure the `assets/` folder is in the same directory as `main.py`.
+3. Run `python main.py`.
 
-  Use the ⚙️ icon to change folders.
+
+
+## Credits
+*If you use the code for your own project, please keep the credit in the title bar!*
