@@ -45,7 +45,7 @@ If you want to run the script from source or modify it:
 3. **Font:** The **Pixel Operator** font is required. (unless you're using the code for your own project then you can use whatever font you may want.) 
    * It is included in the `assets/` folder.
    * You can also download it from [Dafont](https://www.dafont.com/pixel-operator.font).
-   * 
+
 ### How to Run from Source
 1. Clone the repo.
 2. Ensure the `assets/` folder is in the same directory as `main.py`.
