@@ -3,7 +3,7 @@ A lightweight Python tool that automatically monitors your **UNDERTALE** save fo
 
 Designed specifically for speedrunners to keep track of **resets** (where save files are physically deleted) so that each run can be legal. In-game resets do not count, since they don’t delete the save files from the folders. Runs using only in-game resets are not legal for speedrunning.
 
-⭐ If this tool helped your runs, consider **starring** the repo, it really helps, ty! 
+⭐ If this tool helped your runs or you find it cool, consider **starring** the repo, it really helps, ty! 
 
 ---
 <img width="550" height="405" alt="Screenshot 2025-12-23 195848" src="https://github.com/user-attachments/assets/6112ed6b-8b32-466e-8ebf-9084332cede8" />
