@@ -9,6 +9,7 @@ import sys
 import customtkinter as ctk
 import ctypes
 
+CONFIG_FILE = "config.txt"
 
 
 def resource_path(relative_path):
@@ -120,6 +121,14 @@ SAVE_FILES = ["file0", "file9", "undertale.ini"]
 
 
 path_var = tk.StringVar()
+
+if os.path.exists(CONFIG_FILE):
+    with open(CONFIG_FILE, "r", encoding="utf-8") as f:
+        saved_path = f.read().strip()
+        if os.path.isdir(saved_path):
+            path_var.set(saved_path)
+
+
 reset_count = 0
 watching = False
 
@@ -177,6 +186,8 @@ tk.Label(root, textvariable=label_count_var, fg="white", bg="black", font=undert
 
 def watch_folder(folder):
     global reset_count
+    with open(CONFIG_FILE, "w", encoding="utf-8") as f:
+        f.write(folder)
     had_files = any(os.path.exists(os.path.join(folder, f)) for f in SAVE_FILES)
     while watching:
         have_files = any(os.path.exists(os.path.join(folder, f)) for f in SAVE_FILES)
@@ -227,27 +238,39 @@ def toggle_folder_frame():
     else:
         folder_frame.pack(pady=20, side="top")
 
+
 def Reset():
     global reset_count
+
     folder = path_var.get()
-    label_count_var.set(str(reset_count))
-    if os.path.exists(f"{folder}\\playerachievementcache.dat"):
-        os.remove(f'{folder}\\playerachievementcache.dat')
-    if os.path.exists(f"{folder}\\system_information_962"):
-        os.remove(f'{folder}\\system_information_962')
-    if os.path.exists(f"{folder}\\system_information_963"):
-        os.remove(f'{folder}\\system_information_963')
-    if os.path.exists(f"{folder}\\file0"):
-        os.remove(f'{folder}\\file0')
-    if os.path.exists(f'{folder}\\file9'):
-        os.remove(f'{folder}\\file9')
-    if os.path.exists(f'{folder}\\file8'):
-        os.remove(f'{folder}\\file8')
-    if os.path.exists(f'{folder}\\undertale.ini'):
-        os.remove(f'{folder}\\undertale.ini')
+    if not folder or not os.path.isdir(folder):
+        return
+
+    files_deleted = False
+
+    files_to_delete = [
+        "playerachievementcache.dat",
+        "system_information_962",
+        "system_information_963",
+        "file0",
+        "file9",
+        "file8",
+        "undertale.ini"
+    ]
+
+    for f in files_to_delete:
+        path = os.path.join(folder, f)
+        if os.path.exists(path):
+            try:
+                os.remove(path)
+                files_deleted = True
+            except Exception:
+                pass
+
+    if files_deleted:
         reset_count += 1
-    else:
-        reset_count = reset_count
+        label_count_var.set(str(reset_count))
+
     
     
 
