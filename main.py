@@ -8,8 +8,27 @@ import os
 import sys
 import customtkinter as ctk
 import ctypes
+import json
+import keyboard
 
 CONFIG_FILE = "config.txt"
+
+SETTINGS_FILE = "settings.json"
+
+DEFAULT_SETTINGS = {
+    "reset_key": "F5"
+}
+
+def load_settings():
+    if not os.path.exists(SETTINGS_FILE):
+        return DEFAULT_SETTINGS.copy()
+    with open(SETTINGS_FILE, "r") as f:
+        return json.load(f)
+
+def save_settings(settings):
+    with open(SETTINGS_FILE, "w") as f:
+        json.dump(settings, f, indent=4)
+
 
 
 def resource_path(relative_path):
@@ -42,7 +61,7 @@ if os.path.exists(font_path):
 
 
 root.overrideredirect(True)
-root.after(10, lambda: root.set_window_attribute("-topmost", False))  ## if you set this to true it makes it stay on top of all windows, if you want it and it makes it easier to use for streaming then yeah go for it
+root.after(10, lambda: root.attributes("-topmost", False))  ## if you set this to true it makes it stay on top of all windows, if you want it and it makes it easier to use for streaming then yeah go for it
 
 def show_in_taskbar(window):
     GWL_EXSTYLE = -20
@@ -121,6 +140,7 @@ SAVE_FILES = ["file0", "file9", "undertale.ini"]
 
 
 path_var = tk.StringVar()
+settings = load_settings()
 
 if os.path.exists(CONFIG_FILE):
     with open(CONFIG_FILE, "r", encoding="utf-8") as f:
@@ -239,16 +259,25 @@ def toggle_folder_frame():
         folder_frame.pack(pady=20, side="top")
 
 
+
+reset_lock = False
+
 def Reset():
-    global reset_count
+    global reset_lock, reset_count
+
+    if reset_lock:
+        return
+
+    reset_lock = True
 
     folder = path_var.get()
-    if not folder or not os.path.isdir(folder):
+    if not folder:
+        reset_lock = False
         return
 
     files_deleted = False
 
-    files_to_delete = [
+    for f in [
         "playerachievementcache.dat",
         "system_information_962",
         "system_information_963",
@@ -256,23 +285,23 @@ def Reset():
         "file9",
         "file8",
         "undertale.ini"
-    ]
-
-    for f in files_to_delete:
+    ]:
         path = os.path.join(folder, f)
         if os.path.exists(path):
-            try:
-                os.remove(path)
-                files_deleted = True
-            except Exception:
-                pass
+            os.remove(path)
+            files_deleted = True
 
     if files_deleted:
         reset_count += 1
         label_count_var.set(str(reset_count))
 
-    
-    
+    # small cooldown prevents double fire
+    root.after(150, lambda: unlock_reset())
+
+def unlock_reset():
+    global reset_lock
+    reset_lock = False
+
 
 reset_btn_border = tk.Frame(root, bg="white", bd=0)
 reset_btn_border.pack(pady=10) 
@@ -293,6 +322,15 @@ reset_btn = tk.Button(
     cursor="hand2"
 )
 reset_btn.pack(padx=2, pady=2)
+
+reset_key = settings.get("reset_key", "F5")
+if reset_key:
+    try:
+        keyboard.add_hotkey(reset_key, Reset)
+    except Exception as e:
+        print(f"Failed to register global hotkey {reset_key}: {e}")
+
+
 
 def on_enter(e): e.widget.config(bg="white", fg="black")
 def on_leave(e): e.widget.config(bg="black", fg="white")
