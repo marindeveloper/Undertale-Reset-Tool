@@ -23,6 +23,8 @@ If you just want to use the tool as is, you don't need to install anything else.
 ## Features
 * **Auto-Detection:** Automatically increments the counter when save files are deleted and recreated.
 * **True Reset Button:** Clears all Undertale save data (`file0`, `file9`, `undertale.ini`, etc.) with one click.
+* **Global keybind added** Edit settings.json to change it, restart app after changing. (for example you can replace "F5" with "ctril+shift+r")
+* **Save folder path now remembers itself** So you don't have to re-enter it every time.
 * **Undertale Aesthetic:** Custom UI inspired by the game’s style.
 * **Customizable:** Change your save folder at any time using the ⚙️ icon.
 
