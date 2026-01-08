@@ -16,7 +16,7 @@ If you just want to use the tool as is, you don't need to install anything else.
 2. Download the latest `Undertale-Reset-Tool.zip`.
 3. Extract the folder and run `Undertale Reset Tool.exe`.
 
-> **⚠️ Antivirus Note:** Some antivirus software MAY flag the EXE as a false positive.(But probably won't) This is a common issue with Python apps built with PyInstaller. You can verify the safety by checking the source code here (it's only 283 lines so), by uploading it to virustotal (Scores 3/72, all 3 are false positives and from unknown/irrelevant antiviruses) or well you can do anything you want lol it's open source.
+> **⚠️ Antivirus Note:** Some antivirus software MAY flag the EXE as a false positive.(But probably won't) This is a common issue with Python apps built with PyInstaller. You can verify the safety by checking the source code here (it's only 345 lines so), by uploading it to virustotal (Scores 3/72, all 3 are false positives and from unknown/irrelevant antiviruses) or well you can do anything you want lol it's open source.
 
 
 
